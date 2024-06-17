@@ -119,15 +119,12 @@
     };
 
     document.body.appendChild(script);
-
-    var tryToResumeAudioContext = function () {
-      if (WEBAudio.audioContext.state === 'suspended')
-        WEBAudio.audioContext.resume();
-      else
-        Module.clearInterval(resumeInterval);
-    };
-    var resumeInterval = Module.setInterval(tryToResumeAudioContext, 400);
-
+    let audioContext;
+    document.body.addEventListener('click', () => {
+      if (!audioContext) {
+        audioContext = new (AudioContext || webkitAudioContext)();
+      }
+    });
   </script>
 </body>
 
