@@ -119,12 +119,11 @@
     };
 
     document.body.appendChild(script);
-    let audioContext;
-    document.body.addEventListener('click', () => {
-      if (!audioContext) {
-        audioContext = new (AudioContext || webkitAudioContext)();
-      }
+
+    document.documentElement.addEventListener("mousedown", () => {
+      if (context.state !== "running") context.resume();
     });
+
   </script>
 </body>
 
