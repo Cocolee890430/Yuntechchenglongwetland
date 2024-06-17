@@ -120,6 +120,14 @@
 
     document.body.appendChild(script);
 
+    var tryToResumeAudioContext = function () {
+      if (WEBAudio.audioContext.state === 'suspended')
+        WEBAudio.audioContext.resume();
+      else
+        Module.clearInterval(resumeInterval);
+    };
+    var resumeInterval = Module.setInterval(tryToResumeAudioContext, 400);
+
   </script>
 </body>
 
