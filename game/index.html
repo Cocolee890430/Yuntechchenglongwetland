@@ -122,13 +122,15 @@
 
     let context;
 
-    if (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined') {
-      context = new (AudioContext || webkitAudioContext)();
-    } else {
-      console.error('This browser does not support AudioContext.');
-    }
+    window.addEventListener('load', () => {
+      if (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined') {
+        context = new (AudioContext || webkitAudioContext)();
+        console.log('AudioContext initialized.');
+      } else {
+        console.error('This browser does not support AudioContext.');
+      }
+    });
 
-    // 添加用户交互事件监听器
     document.documentElement.addEventListener("mousedown", () => {
       if (context && context.state !== "running") {
         context.resume().then(() => {
@@ -138,7 +140,6 @@
         });
       }
     });
-
   </script>
 </body>
 
