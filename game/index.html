@@ -120,26 +120,6 @@
 
     document.body.appendChild(script);
 
-    let context;
-
-    window.addEventListener('load', () => {
-      if (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined') {
-        context = new (AudioContext || webkitAudioContext)();
-        console.log('AudioContext initialized.');
-      } else {
-        console.error('This browser does not support AudioContext.');
-      }
-    });
-
-    document.documentElement.addEventListener("mousedown", () => {
-      if (context && context.state !== "running") {
-        context.resume().then(() => {
-          console.log('AudioContext resumed successfully.');
-        }).catch(err => {
-          console.error('Failed to resume AudioContext:', err);
-        });
-      }
-    });
   </script>
 </body>
 
