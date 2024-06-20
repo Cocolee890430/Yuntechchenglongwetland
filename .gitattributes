@@ -1,4 +1,2 @@
-*.mp4* filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
 *.data filter=lfs diff=lfs merge=lfs -text
-*.data.br filter=lfs diff=lfs merge=lfs -text
-game/Build/Build.data filter=lfs diff=lfs merge=lfs -text
